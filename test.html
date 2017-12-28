@@ -1,0 +1,178 @@
+<table>
+
+<!-- top block -->
+<tr><td colspan=3>
+  <table width=100%>
+    <tr>
+      <td width=1><b>Name</b></td>
+      <td colspan=3><input type=text width=50 style='width: 16.5em;' name="attr_name" /></td>
+      <td width=1>Sex</td>
+      <td><input type=text width=10 style='width: 5em;' name="attr_gender" /></td>
+      </td>
+    </tr>
+    <tr>
+      <td width=1>Race</td>
+      <td><input type=text width=20 style='width: 8em;' name="attr_race" /></td>
+      <td width=1>Height</td>
+      <td><input type=text width=10 style='width: 5em;' name="attr_height" /></td>
+      <td width=1>Level</td>
+      <td><input type=number width=5 style='width: 5em;' name="attr_Level" value="1"/></td>
+    </tr>
+    <tr>
+      <td width=1>Familia</td>
+      <td><input type=text width=20 style='width: 8em;' name="attr_familia" /></td>
+      <td width=1>Weight</td>
+      <td><input type=text width=10 style='width: 5em;' name="attr_weight" /></td>
+      <td width=1>Age</td>
+      <td><input type=number width=10 style='width: 5em;' name="attr_age" /></td>
+    </tr>
+  </table>
+</td></tr>
+<tr><td valign=top>
+<!-- column 1 -->
+
+  <div class='sheet-2colrow'>
+    <div class='sheet-col'>
+        <table width=100% cellpadding="5" border=3px solid black;>
+      <thead>
+      <tr>
+        <td>Attribute</td>
+        <td width=1 >Base</td> 
+        <td width=1 >Bonus</td>
+        <td width=1 >Total</td>
+      </tr>
+      </thead>
+      <tr>
+        <td>Strength</td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_STRbase" value="10"></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_STRbonus" value="10"/></td>
+        <td><input type=number width=5 style='width: 7em;' name="attr_STRtrue" value="@{STRbase}+@{STRbonus}" disabled="true"></td>
+      </tr>
+      <tr>
+        <td>Endurance</td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_ENDbase" value="10"/></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_ENDbonus" value="10"/></td>
+        <td><input type=number width=5 style='width: 7em;' name="attr_ENDtrue" value="@{ENDbase}+@{ENDbonus}" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td>Dexterity</td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_DEXbase" value="10"/></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_DEXbonus" value="10"/></td>
+        <td><input type=number width=5 style='width: 7em;' name="attr_DEXtrue" value="@{DEXbase}+@{DEXbonus}" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td>Agility</td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_AGIbase" value="10"/></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_AGIbonus" value="10"/></td>
+        <td><input type=number width=5 style='width: 7em;' name="attr_AGItrue"value="@{AGIbase}+@{AGIbonus}" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td>Magic</td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_MAGbase" value="0"/></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_MAGbonus" value="0"/></td>
+        <td><input type=number width=5 style='width: 7em;' name="attr_MAGtrue"value="@{MAGbase}+@{MAGbonus}" disabled="true"/></td>
+      </tr>
+    </table>
+    </div>
+    <div class='sheet-col'>
+       
+  </div>
+  
+<!-- column 2 -->
+
+  <div class=sheet-2colrow>
+      <div class='sheet-col'>
+        <table width=50%>
+      <thead>
+      <tr>
+        <td>Statistic</td>
+        <td width=1>Base</td>
+        <td width=1>Bonus</td>
+        <td width=1>Total</td>
+        </tr>
+      </thead>
+      <tr>
+        <td>Max Health</td>
+        <td><input type=number width=3 style='width: 4em;' name="attr_MAXHPbase" 
+        Value="floor(@((150*(@{Level})-50)+((@{ENDtrue})/4)))" disabled="true" /></td>
+        <td><input type=number width=3 style='width: 4em;' name="attr_MAXHPbonus" Value="0" /></td>
+        <td><input type=number width=3 style='width: 5em;' name="attr_MAXHPtrue" Value="(@{MAXHPbase})+(@{MAXHPbonus})" disabled="true" /></td>
+      </tr>
+      <tr>
+        <td>Max Mana</td>
+        <td><input type=number width=3 style='width: 4em;' name="attr_MAXMPbase" 
+        Value="floor(@(((@{MAGtrue})/8)))" disabled="true" /></td>
+        <td><input type=number width=3 style='width: 4em;' name="attr_MAXMPbonus"Value="0" /></td>
+        <td><input type=number width=3 style='width: 5em;' name="attr_MAXMPtrue" Value="(@{MAXMPbase})+(@{MAXMPbonus})" disabled="true" /></td>
+      </tr>
+      <tr>
+        <td>Max Fatigue</td>
+        <td><input type=number width=3 style='width: 4em;' name="attr_MAXFPbase" 
+        Value="floor(@((50*(@{level})-20)+(((@{ENDtrue})/10)+((@{AGItrue})/25)+((@{STRtrue})/25))))" disabled="true" /></td>
+        <td><input type=number width=3 style='width: 4em;' name="attr_MAXFPbonus" Value="0" /></td>
+        <td><input type=number width=3 style='width: 5em;' name="attr_MAXFPtrue" Value="(@{MAXFPbase})+(@{MAXFPbonus})" disabled="true" /></td>
+      </tr>
+      <tr>
+        <td>Arcane Rating</td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_ARCbase"
+        Value="floor(@(((@{MAGtrue})/12)))" disabled="true"/></td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_ARCbonus" Value="0" /></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_ARCtrue" Value="(@{ARCbase})+(@{ARCbonus})" disabled="true"/></td>
+      </tr>
+    </table>
+ 
+    </div>
+    <div class='sheet-col'>
+        <table width=50%>
+      <thead>
+      <tr>
+        <td>Statistic</td>
+        <td width=1>Base</td>
+        <td width=1>Bonus</td>
+        <td width=1>Total</td>
+        </tr>
+      </thead>
+      <tr>
+        <td>Attack Rating</td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_ATKbase" 
+        Value="floor(@((25*(@{Level})-15)+(((@{DEXtrue})/10)+((@{STRtrue})/25))))" disabled="true"/></td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_ATKbonus" Value="0" /></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_ATKtrue" Value="(@{ATKbase})+(@{ATKbonus})" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td>Defense Rating</td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_DEFbase"
+        Value="floor(@((25*(@{Level})-15)+(((@{AGItrue})/10)+((@{ENDtrue})/25))))" disabled="true"/></td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_DEFbonus" Value="0" /></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_DEFtrue" Value="(@{DEFbase})+(@{DEFbonus})" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td>Damage Rating</td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_DAMbase"
+        Value="floor(@((15*(@{Level})-10)+(((@{STRtrue})/20)+((@{DEXtrue})/50))))" disabled="true"/></td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_DAMbonus" Value="0" /></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_DAMtrue" Value="(@{DAMbase})+(@{DAMbonus})" disabled="true"/></td>
+      </tr>
+      <tr>
+        <td>Reaction Rating</td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_SPDbase"
+        Value="floor(@((10*(@{Level})-5)+(((@{AGItrue})/25)+((@{DEXtrue})/50))))" disabled="true"/></td>
+        <td><input type=number width=5 style='width: 4em;' name="attr_SPDbonus" Value="0" /></td>
+        <td><input type=number width=5 style='width: 5em;' name="attr_SPDtrue" Value="(@{SPDbase})+(@{SPDbonus})" disabled="true"/></td>
+      </tr>
+    </table>
+    </div>
+  </div>
+ </table>
+  <h3>Skills</h3>
+<fieldset class="repeating_skills">  
+
+      <input type="text" name="attr_skillname" />           
+     <select name="attr_dtype" class="dtype">                
+          <option value="1">Rank I</option>
+          <option value="2">Rank II</option>
+          <option value="3">Rank III</option>
+          <option value="4">Rank IV</option>
+          <option value="5">Rank V</option>
+    </select>     
+</fieldset>
